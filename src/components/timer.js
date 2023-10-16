@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import TimerOptions from "./options";
 import Countdown from "./countdown";
 import { StartButton, StopButton } from "./buttons";
 
