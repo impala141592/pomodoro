@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Ubuntu+Mono&display=swap');
 
+$pomo-light: #fac8c0;
+$pomo-med: #ff6347;
+$pomo-dark: #c71e00;
+
 * {
     padding: 0;
     margin: 0;
@@ -17,7 +21,7 @@
   }
 
 .App {
-    background-color: tomato;
+    background-color: $pomo-med;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -27,11 +31,14 @@
 }
 
 .timer-container {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-    width: 400px;}
+    width: 400px;
+    background-color:  $pomo-dark;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 0.5rem $pomo-dark;
+}   
+
+
+//timer options
 
 .timer-options {
     width: 100%;
@@ -39,32 +46,89 @@
     display: flex;
     align-items: center;
     border-radius: 1rem 1rem 0 0;
-    padding: 0.5rem;
+    padding: 0.3rem;
 
     .button {
         width: calc(100% / 3);
         height: 100%;
         // padding: 0.1rem;
         font-size: 1rem;
-        border-radius: 0.5rem;
+        border-radius: 0.7rem;
+        color: $pomo-light;
+        transition: all 0.15s ease-in-out;
+        cursor: pointer;
 
-        
         &.active {
-            background: teal;
+            background: $pomo-med;
+            color: white;
+
+            &:hover {
+                background: $pomo-med;
+                color: white;
+            }
+        }
+
+        &:hover {
+            color: white;
+            background: #dc3619;
         }
     }
 }
 
+
+
 .timer {
-    background-color: #ee7f6c;
+    background-color: $pomo-light;
     padding: 3rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-border-radius: 0 0 20px 20px ;}
+    border-radius:  1rem;
+    box-shadow: inset 0 0 0.3rem $pomo-dark;
+}
+
+
+//countdown
 
 .countdown {
     font-size: 4rem;
-    color: white;
+    color: $pomo-dark;
+}
+
+
+
+
+//timer controls
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+
+
+    .control-button {
+        background: $pomo-dark;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        color: $pomo-light;
+        font-size: 1rem;
+        width: 30%;
+        font-weight: 700;
+        box-shadow: 0  0.2rem $pomo-med;
+        transition: all 0.15s ease-in-out;
+
+
+        &:hover {
+            color: white;
+        }  
+    
+
+        &:active {
+            transform: translateY(0.05rem);
+            box-shadow: 0  0.1rem $pomo-med;
+        }
+    
+    }   
 }

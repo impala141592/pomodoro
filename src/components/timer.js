@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TimerOptions from "./options";
 import Countdown from "./countdown";
 import { StartButton, StopButton } from "./buttons";
 
@@ -62,19 +63,18 @@ function Timer() {
       <div className="timer">
         <Countdown time={formattedTime} />
 
-        <button onClick={toggleCountdown}>
-          {isRunning ? "Pause" : "Start"}
-        </button>
-
-        <button
-          onClick={() => {
-            setSelectedTime(timeOptions[0].value);
-            setSeconds(timeOptions[0].value);
-            toggleCountdown();
-          }}
-        >
-          Reset
-        </button>
+        <div className="timer-controls">
+          <StartButton
+            isRunning={isRunning}
+            toggleCountdown={toggleCountdown}
+          />
+          <StopButton
+            resetCountdown={() => {
+              setIsRunning(false);
+              setSeconds(selectedTime);
+            }}
+          />
+        </div>
       </div>
     </div>
   );
