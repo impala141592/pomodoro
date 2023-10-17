@@ -1,3 +1,15 @@
+# Pomodoro
+
+## Introduction
+
+Pomodoro is a productivity tool inspired by the Pomodoro Technique, designed to help users enhance their productivity and time management skills. This project provides a user-friendly countdown timer with a focus on learning and implementing key React concepts.
+
+## Features
+
+- Start, pause, and reset the countdown timer.
+- Audio integration for sound effects upon timer completion.
+- Easy customization of timer durations and configurations.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
