@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import countdownSound from "../audio/short-ring-tone-sound-effect.mp3";
 import Countdown from "./countdown";
 import { StartButton, StopButton } from "./buttons";
 
@@ -8,10 +9,16 @@ function Timer() {
     { label: "short break", value: 300 }, // 5 minutes in seconds
     { label: "long break", value: 900 }, // 15 minutes in seconds
   ];
-
+  const audioRef = useRef(null);
   const [selectedTime, setSelectedTime] = useState(timeOptions[0].value);
   const [seconds, setSeconds] = useState(selectedTime);
   const [isRunning, setIsRunning] = useState(false);
+
+  const handleCountdownComplete = () => {
+    setIsRunning(false);
+    setSeconds(selectedTime);
+    audioRef.current.play(); // Play the sound
+  };
 
   useEffect(() => {
     let timer;
@@ -20,6 +27,10 @@ function Timer() {
       timer = setInterval(() => {
         setSeconds(seconds - 1);
       }, 1000);
+    }
+
+    if (seconds === 0) {
+      handleCountdownComplete();
     }
 
     return () => {
@@ -46,6 +57,9 @@ function Timer() {
 
   return (
     <div className="timer-container">
+      <audio ref={audioRef} id="countdown-audio">
+        <source src={countdownSound} type="audio/mpeg" />
+      </audio>
       <div className="timer-options">
         {timeOptions.map((option) => (
           <button
